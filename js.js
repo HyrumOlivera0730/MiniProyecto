@@ -17,6 +17,7 @@ const server = http.createServer((request, response)=>{
                         response.end('Error interno del servidor')
                         return
                     } 
+                    console.log('Presentación del API');
                     response.writeHead(200, {'Content-Type': 'text/html'})
                     response.end(data)
                     
@@ -30,14 +31,14 @@ const server = http.createServer((request, response)=>{
                         response.end("Error interno del servidor");
                     } else {
                         const string = JSON.stringify(result);
-            
+                        console.log('Usuarios listados en formato JSON');
                         response.writeHead(200, {"Content-type":"application/json"});
                         response.end(string);
                     }
                 })
                 break
             case '/api/usuarios/export':
-                connection.query('SELECT * FROM usuarios;', (err, result) => {
+                connection.query('SELECT usuario_id, nombre, apellidos, direccion, correo_electronico, documento_identidad, edad, DATE_FORMAT(fecha_creacion, "%Y-%m-%d %H:%i:%s") AS fecha_creacion, telefono FROM usuarios;', (err, result) => {
                     if (err) {
                         console.error('Error al consultar', err);
                         response.writeHead(500, { "Content-type": "text/plain" });
@@ -65,44 +66,45 @@ const server = http.createServer((request, response)=>{
                     }
                 });
                 break;
-            default:
-                response.end('No existe esa ruta')
-                break;
-        }
-    } else if (method === 'POST'){
-        switch(url){
-            case'/api/usuarios/import':
-            const ruta2 = path.resolve('./nuevosUsuarios.csv')
-            fs.readFile(ruta2, 'utf8', async (err, data) => {
-                if (err) {
-                    console.error('Error al leer el archivo CSV', err);
-                    response.writeHead(500, { "Content-type": "text/plain" });
-                    response.end("Error interno del servidor al importar usuarios");
-                } else {
-                    const filas = data.split('\n')
-                    const filasFiltradas = filas.filter(i => i !== '')
-                    filasFiltradas.shift()
-                    
-                    filasFiltradas.forEach(async fila => {
-                        const columnas = fila.split(',')
-                        const correo = columnas[2]
-                    
-                        if (!correo.includes('@')) {
-                          console.log('No se insertó una fila porque el correo no es válido')
-                          return
-                        }
-                    
+            case '/api/usuarios/import':
+                const rutaArchivoCSV = path.resolve('./nuevosUsuarios.csv');
+                fs.readFile(rutaArchivoCSV, 'utf8', async (err, data) => {
+                    if (err) {
+                        console.error('Error al leer el archivo CSV', err);
+                        response.writeHead(500, { "Content-type": "text/plain" });
+                        response.end("Error interno del servidor al importar usuarios");
+                    } else {
+                        const filas = data.split('\n');
+                        const filasFiltradas = filas.filter(i => i.trim() !== '');
+                        filasFiltradas.shift();
+            
                         try {
-                          await pool.execute('INSERT INTO usuarios(usuario_id, nombres, correo, fecha_creacion) VALUES(?,?,?,?)', columnas)
+                            for (const fila of filasFiltradas) {
+                                const columnas = fila.split(',');
+                                if (columnas.length !== 9) {
+                                    console.log('No se insertó una fila porque el formato es incorrecto:', fila);
+                                    continue;
+                                }
+                                const correo = columnas[4];
+                                if (!correo.includes('@')) {
+                                    console.log('No se insertó una fila porque el correo no es válido:', fila);
+                                    continue;
+                                }
+                                await connection.execute('INSERT INTO usuarios(usuario_id, nombre, apellidos, direccion, correo_electronico, documento_identidad, edad, fecha_creacion, telefono) VALUES(?,?,?,?,?,?,?,?,?)', columnas);
+                                console.log('Fila insertada correctamente:', fila);
+                            }
+                            response.writeHead(200, { "Content-type": "text/plain" });
+                            response.end("Usuarios importados correctamente");
                         } catch (error) {
-                          console.log('No se insertó la fila: ', columnas[0])
+                            console.error('Error al insertar filas en la base de datos', error);
+                            response.writeHead(500, { "Content-type": "text/plain" });
+                            response.end("Error interno del servidor al importar usuarios");
                         }
-                      })
-                }
-            })
-                break
-            default:
-                response.end('No existe esa ruta')
+                    }
+                });
+                break;
+                default:
+                response.end('No existe esa ruta en GET')
                 break;
         }
     } else {
