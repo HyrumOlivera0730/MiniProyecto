@@ -90,6 +90,34 @@ const server = http.createServer((request, response)=>{
                                     console.log('No se insertó una fila porque el correo no es válido:', fila);
                                     continue;
                                 }
+                                const dni = columnas[5]
+                                if (!dni || isNaN(dni) || dni.length > 9) {
+                                    console.log('No se insertó una fila porque el DNI no es válido:', fila);
+                                    continue;
+                                }
+                                const edad = columnas[6]
+                                if (isNaN(edad) || edad < 1 || edad > 100) {
+                                    console.log('No se insertó una fila porque la edad no es válida:', fila);
+                                    continue;
+                                }
+                                const fecha = columnas[7];
+                                const fecha_creacion_regex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/;
+                                if (!fecha.match(fecha_creacion_regex)) {
+                                    console.log('No se insertó una fila porque el formato de fecha_creacion es incorrecto:', fila);
+                                    continue;
+                                }
+                                const telefono = columnas[8]
+                                if (!telefono || isNaN(telefono)) {
+                                    console.log('No se insertó una fila porque el telefono no es válido:', fila);
+                                    continue;
+                                }
+                                const nombres = columnas[1]
+                                const apellidos = columnas[2]
+                                const soloLetras = /^[A-Za-z]+$/;
+                                if (!nombres.match(soloLetras) || !apellidos.match(soloLetras)) {
+                                    console.log('No se insertó una fila porque el nombre o apellido no contiene solo letras:', fila);
+                                    continue;
+                                }
                                 await connection.execute('INSERT INTO usuarios(usuario_id, nombre, apellidos, direccion, correo_electronico, documento_identidad, edad, fecha_creacion, telefono) VALUES(?,?,?,?,?,?,?,?,?)', columnas);
                                 console.log('Fila insertada correctamente:', fila);
                             }
