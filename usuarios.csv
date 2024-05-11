@@ -1,0 +1,21 @@
+id,nombres,apellidos,direccion,correo,dni,edad,fecha_creacion,telefono
+1,Maria,Silva,Rua das Flores 123,maria_silva@example.com,123456789,25,Wed May 08 2024 19:46:38 GMT-0300 (hora estándar de Brasilia),123456789
+2,João,Santos,Avenida Brasil 456,joao_santos@example.com,987654321,30,Wed May 08 2024 19:46:38 GMT-0300 (hora estándar de Brasilia),987654321
+3,Ana,Ferreira,Rua dos Passarinhos 789,ana_ferreira@example.com,456123789,35,Wed May 08 2024 19:46:38 GMT-0300 (hora estándar de Brasilia),456123789
+4,Pedro,Oliveira,Rua das Árvores 456,pedro_oliveira@example.com,789123456,40,Wed May 08 2024 19:46:38 GMT-0300 (hora estándar de Brasilia),789123456
+5,Sofia,Martins,Avenida Paulista 789,sofia_martins@example.com,159357486,27,Wed May 08 2024 19:46:38 GMT-0300 (hora estándar de Brasilia),159357486
+6,Carlos,Lima,Rua dos Gatos 456,carlos_lima@example.com,357159486,33,Wed May 08 2024 19:46:38 GMT-0300 (hora estándar de Brasilia),357159486
+7,Mariana,Gomes,Avenida da Praia 123,mariana_gomes@example.com,753159852,22,Wed May 08 2024 19:46:38 GMT-0300 (hora estándar de Brasilia),753159852
+8,Antônio,Ribeiro,Rua das Pedras 789,antonio_ribeiro@example.com,852369147,45,Wed May 08 2024 19:46:38 GMT-0300 (hora estándar de Brasilia),852369147
+9,Isabela,Almeida,Rua das Montanhas 456,isabela_almeida@example.com,951753258,29,Wed May 08 2024 19:46:38 GMT-0300 (hora estándar de Brasilia),951753258
+10,Fernando,Dias,Avenida das Rosas 789,fernando_dias@example.com,456852357,38,Wed May 08 2024 19:46:38 GMT-0300 (hora estándar de Brasilia),456852357
+11,Rafael,Pereira,Rua das Palmeiras 789,rafael_pereira@example.com,369852147,31,Wed May 08 2024 19:47:34 GMT-0300 (hora estándar de Brasilia),369852147
+12,Camila,Souza,Avenida das Flores 456,camila_souza@example.com,147258369,26,Wed May 08 2024 19:47:34 GMT-0300 (hora estándar de Brasilia),147258369
+13,Guilherme,Costa,Rua das Praias 123,guilherme_costa@example.com,258369147,29,Wed May 08 2024 19:47:34 GMT-0300 (hora estándar de Brasilia),258369147
+14,Juliana,Nunes,Avenida dos Coqueiros 789,juliana_nunes@example.com,963852741,32,Wed May 08 2024 19:47:34 GMT-0300 (hora estándar de Brasilia),963852741
+15,Lucas,Mendes,Rua dos Pinheiros 456,lucas_mendes@example.com,741258963,28,Wed May 08 2024 19:47:34 GMT-0300 (hora estándar de Brasilia),741258963
+16,Carolina,Cavalcanti,Avenida das Pedras 123,carolina_cavalcanti@example.co,852147963,34,Wed May 08 2024 19:47:34 GMT-0300 (hora estándar de Brasilia),852147963
+17,André,Rodrigues,Rua das Montanhas 789,andre_rodrigues@example.com,369147258,27,Wed May 08 2024 19:47:34 GMT-0300 (hora estándar de Brasilia),369147258
+18,Amanda,Fernandes,Avenida das Rosas 456,amanda_fernandes@example.com,147369258,30,Wed May 08 2024 19:47:34 GMT-0300 (hora estándar de Brasilia),147369258
+19,Felipe,Santana,Rua das Cachoeiras 123,felipe_santana@example.com,258741369,33,Wed May 08 2024 19:47:34 GMT-0300 (hora estándar de Brasilia),258741369
+20,Patrícia,Lopes,Avenida das Marés 789,patricia_lopes@example.com,963147852,25,Wed May 08 2024 19:47:34 GMT-0300 (hora estándar de Brasilia),963147852
