@@ -14,11 +14,11 @@ Este projeto é uma aplicação simples que utiliza Node.js e MySQL para gerenci
 
 1. Clone o repositório:
     ```sh
-    git clone https://github.com/seu-usuario/user-management-api.git
+    git clone https://github.com/seu-usuario/User-Management-API.git
     ```
 2. Navegue até o diretório do projeto:
     ```sh
-    cd user-management-api
+    cd User-Management-API
     ```
 3. Instale as dependências:
     ```sh
@@ -77,7 +77,7 @@ Este projeto é uma aplicação simples que utiliza Node.js e MySQL para gerenci
 ## Estrutura do Projeto
 
 ```plaintext
-user-management-api/
+User-Management-API/
 ├── index.html
 ├── js.js
 ├── style.css
