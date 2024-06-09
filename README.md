@@ -9,8 +9,6 @@ Este projeto é uma aplicação simples que utiliza Node.js e MySQL para gerenci
 - [Uso](#uso)
 - [API Endpoints](#api-endpoints)
 - [Estrutura do Projeto](#estrutura-do-projeto)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
 
 ## Instalação
 
